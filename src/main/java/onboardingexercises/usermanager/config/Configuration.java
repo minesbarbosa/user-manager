@@ -4,6 +4,7 @@ import onboardingexercises.usermanager.data.InMemoryUserRepository;
 import onboardingexercises.usermanager.data.UserRepository;
 import onboardingexercises.usermanager.model.User;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class Configuration {
     }
 
     @Bean
+    @Profile("!production")
     UserRepository getUserRepository() {
         return new InMemoryUserRepository(initInMemoryDatabase());
     }
