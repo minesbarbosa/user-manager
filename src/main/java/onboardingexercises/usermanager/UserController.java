@@ -15,9 +15,9 @@ import onboardingexercises.usermanager.model.*;
 public class UserController {
 
     @Autowired
-    private final JpaUserRepository repository;
+    private final UserRepository repository;
 
-    UserController(JpaUserRepository repository) {
+    UserController(UserRepository repository) {
         this.repository = repository;
     }
 
