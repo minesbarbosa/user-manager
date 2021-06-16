@@ -18,6 +18,10 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     public List<User> findAll() {
         List<User> result = userRepository.findAll();
         logger.info(String.format("%d users fetched", result.size()));
