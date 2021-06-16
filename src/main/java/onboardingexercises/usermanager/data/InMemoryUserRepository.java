@@ -1,6 +1,7 @@
 package onboardingexercises.usermanager.data;
 
 import onboardingexercises.usermanager.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
