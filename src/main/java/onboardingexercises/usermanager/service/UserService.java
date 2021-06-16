@@ -39,9 +39,9 @@ public class UserService {
         return result;
     }
 
-    public List<User> save(User user) {
+    public User save(User user) {
         User result = userRepository.save(user);
-        logger.info("operation='save' msg='New user created: '" + result);
-        return userRepository.findAll();
+        logger.info("operation='save' msg='New user created:'" + result);
+        return result;
     }
 }

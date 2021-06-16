@@ -30,9 +30,10 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    void newUser(@RequestBody User user) {
-        userService.save(user);
+    User newUser(@RequestBody User user) {
+        User result = userService.save(user);
         userService.findAllForceRefresh();
         logger.info("New user created");
+        return result;
     }
 }
