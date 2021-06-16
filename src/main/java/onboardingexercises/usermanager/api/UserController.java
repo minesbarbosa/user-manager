@@ -14,6 +14,7 @@ import onboardingexercises.usermanager.model.*;
 public class UserController {
 
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private final UserService userService;
 
@@ -29,9 +30,9 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    User newUser(@RequestBody User user) {
-        User result = userService.save(user);
-        logger.info("New user created: " + result);
-        return result;
+    void newUser(@RequestBody User user) {
+        userService.save(user);
+        userService.findAllForceRefresh();
+        logger.info("New user created");
     }
 }

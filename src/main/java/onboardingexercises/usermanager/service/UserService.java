@@ -33,20 +33,15 @@ public class UserService {
     }
 
     @CachePut
-    public List<User> findAllUsers() {
+    public List<User> findAllForceRefresh() {
         List<User> result = userRepository.findAll();
-        logger.info(String.format("operation='findAllUsers msg='%d users fetched'", result.size()));
+        logger.info(String.format("operation='findAll' msg='%d users fetched'", result.size()));
         return result;
     }
 
-    public User save(User user) {
+    public List<User> save(User user) {
         User result = userRepository.save(user);
         logger.info("operation='save' msg='New user created: '" + result);
-        findAllUsers();
-        return result;
+        return userRepository.findAll();
     }
-
-    /*  private void putUserInCache(String cacheName, User user) {
-        cacheManager.getCache(cacheName).put(user.getId(), user);
-    }*/
 }
