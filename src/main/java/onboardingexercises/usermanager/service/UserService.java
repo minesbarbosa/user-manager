@@ -28,15 +28,21 @@ public class UserService {
     @Cacheable
     public List<User> findAll() {
         List<User> result = userRepository.findAll();
-        logger.info(String.format("%d users fetched", result.size()));
+        logger.info(String.format("operation='findAll' msg='%d users fetched'", result.size()));
         return result;
     }
 
     @CachePut
+    public List<User> findAllUsers() {
+        List<User> result = userRepository.findAll();
+        logger.info(String.format("operation='findAllUsers msg='%d users fetched'", result.size()));
+        return result;
+    }
+
     public User save(User user) {
         User result = userRepository.save(user);
-        logger.info("New user created: " + result);
-        //   putUserInCache("users", result);
+        logger.info("operation='save' msg='New user created: '" + result);
+        findAllUsers();
         return result;
     }
 
